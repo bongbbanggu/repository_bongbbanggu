@@ -38,7 +38,7 @@ if (mysqli_num_rows($result) == 0) {
 $row = mysqli_fetch_assoc($result);
 
 // 게시글 작성자와 로그인한 사용자 일치 여부 확인
-if ($row['author'] !== $_SESSION['username']) {
+if (isset($_SESSION['username']) && $row['author'] !== $_SESSION['username']) {
     header('Location: index.php');
     exit();
 }
